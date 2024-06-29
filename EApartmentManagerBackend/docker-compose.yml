@@ -1,0 +1,19 @@
+version: '3.4'
+
+name: eapartmentmanagercompose
+services:
+  db:
+    container_name: apartment-db
+    image: postgres
+    restart: always
+    ports:
+      - "54350:5432"
+    environment:
+      POSTGRES_DB: "apartment-db"
+      POSTGRES_USER: "user1"
+      POSTGRES_PASSWORD: "12345"
+    volumes:
+      - apartment-db:/var/lib/postgresql/data
+
+volumes:
+  apartment-db:
