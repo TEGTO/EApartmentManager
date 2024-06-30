@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 namespace ApartmentApiTests
 {
     [TestFixture]
-    public class ApiBehaviorOptionsExtensionsTests
+    internal class ApiBehaviorOptionsExtensionsTests
     {
         private IServiceCollection services;
         private ServiceProvider serviceProvider;

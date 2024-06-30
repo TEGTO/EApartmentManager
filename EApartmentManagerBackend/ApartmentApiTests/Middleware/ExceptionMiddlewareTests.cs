@@ -9,7 +9,7 @@ using ValidationException = FluentValidation.ValidationException;
 namespace ApartmentApiTests.Middleware
 {
     [TestFixture]
-    public class ExceptionMiddlewareTests
+    internal class ExceptionMiddlewareTests
     {
         private Mock<ILogger<ExceptionMiddleware>> loggerMock;
         private DefaultHttpContext httpContext;

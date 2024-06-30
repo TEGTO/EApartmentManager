@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { EffectsModule, provideEffects } from '@ngrx/effects';
+import { StoreModule, provideState, provideStore } from '@ngrx/store';
+import { ApartmentControllerService, ApartmentEffects, ApartmentService, apartmentReducer } from '.';
 
 @NgModule({
   declarations: [],
@@ -18,7 +19,11 @@ import { StoreModule } from '@ngrx/store';
     EffectsModule.forRoot([]),
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideStore(),
+    provideState({ name: "apartments", reducer: apartmentReducer }),
+    provideEffects(ApartmentEffects),
+    { provide: ApartmentService, useClass: ApartmentControllerService }
   ]
 })
 export class ApartmentModule { }

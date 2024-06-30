@@ -7,6 +7,6 @@ import { URLDefiner } from './url-definer';
 })
 export class URLDefinerService extends URLDefiner {
   override combineWithApartmentApiUrl(subpath: string): string {
-    return environment.api + "/auth" + subpath;
+    return environment.api + "/api/apartments" + subpath;
   }
 }
