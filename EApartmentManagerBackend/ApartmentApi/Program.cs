@@ -38,7 +38,7 @@ builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 ValidatorOptions.Global.LanguageManager.Enabled = false;
 
-builder.Services.ConfigureCustomInvalidModelStateResponseContollers();
+builder.Services.ConfigureCustomInvalidModelStateResponseControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(options => options.EnableAnnotations());

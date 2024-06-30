@@ -6,7 +6,7 @@ namespace ApartmentApi
 {
     public static class ApiBehaviorOptionsExtensions
     {
-        public static IServiceCollection ConfigureCustomInvalidModelStateResponseContollers(this IServiceCollection services)
+        public static IServiceCollection ConfigureCustomInvalidModelStateResponseControllers(this IServiceCollection services)
         {
             services.AddControllers().ConfigureApiBehaviorOptions(options =>
             {
