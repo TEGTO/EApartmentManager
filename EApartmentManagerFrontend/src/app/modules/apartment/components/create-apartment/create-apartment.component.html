@@ -1,0 +1,65 @@
+<button mat-icon-button mat-dialog-close class="close-button">
+    <span class="material-icons">close</span>
+</button>
+<h2 mat-dialog-title>Create a new rent</h2>
+<mat-dialog-content>
+
+    <form class="apartment-create-form" id="createForm" [formGroup]="formGroup" (ngSubmit)="submitForm()">
+        <div class="form-field form-title">
+            <label for="apartment-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Title
+            </label>
+            <input type="text" id="apartment-title" formControlName="title" maxlength="99"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Title" />
+            @if (titleInput.hasError('required') && titleInput.touched) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Please enter a title.</p>
+            }
+            @if (titleInput.hasError('maxlength')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Max title length is <strong>99</strong>.</p>
+            }
+        </div>
+        <div class="form-field form-room-amount">
+            <label for="apartment-room-amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Room amount
+            </label>
+            <input type="number" id="apartment-room-amount" formControlName="roomAmount" min="1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            @if (roomAmountInput.hasError('required')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Please enter a room amount.</p>
+            }
+            @if (roomAmountInput.hasError('min')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Min room amount is <strong>1</strong>.</p>
+            }
+        </div>
+        <div class="form-field form-price">
+            <label for="apartment-price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Apartment price
+            </label>
+            <input type="text" id="apartment-price" formControlName="price"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            @if (priceInput.hasError('required')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Please enter an apartment price.</p>
+            }
+            @if (priceInput.hasError('min')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Min price is <strong>0</strong>.</p>
+            }
+        </div>
+        <div class="form-field form-description">
+            <label for="apartment-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Description
+            </label>
+            <textarea id="apartment-description" formControlName="description" maxlength="999"
+                class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Description"></textarea>
+            @if (descriptionInput.hasError('maxlength')) {
+            <p class="mt-2 text-base text-red-600 dark:text-red-500">Max description length is <strong>999</strong>.
+            </p>
+            }
+        </div>
+        <button type="submit" form="createForm"
+            class="flex justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <span class="material-icons">add_circle</span>
+        </button>
+    </form>
+</mat-dialog-content>

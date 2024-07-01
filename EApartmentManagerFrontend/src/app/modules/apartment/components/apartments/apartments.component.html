@@ -1,0 +1,25 @@
+<div class="apartment-wrapper">
+    <div class="header-wrapper text-2xl">
+        <p> Apartments </p>
+        <div class="control-panel">
+            <button mat-icon-button (click)="openCreateMenu()">
+                <span class="material-icons">add_circle</span>
+            </button>
+            <button mat-icon-button (click)="changeSortMode()">
+                @if(isAscendingSort)
+                {
+                <span class="material-icons">arrow_downward</span>
+                }
+                @else {
+                <span class="material-icons">arrow_upward</span>
+                }
+            </button>
+        </div>
+    </div>
+
+    <div class="body-wrapper">
+        <div *ngFor="let i of Arr(num).fill(1)">
+            <apartment-item></apartment-item>
+        </div>
+    </div>
+</div>
