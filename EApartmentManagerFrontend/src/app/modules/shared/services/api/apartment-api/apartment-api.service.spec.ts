@@ -36,7 +36,7 @@ describe('ApartmentApiService', () => {
     const mockApartments: Apartment[] = [{ id: '1', rooms: 3, name: 'Test Apartment', price: 1000, description: 'Test Description' }];
     const rooms = 3;
     const sortMode = SortMode.ascending;
-    const expectedReq = `?sorting=asc&rooms${rooms}`;
+    const expectedReq = `?sorting=asc&rooms=${rooms}`;
 
     service.getAllApartments(rooms, sortMode).subscribe(apartments => {
       expect(apartments).toEqual(mockApartments);

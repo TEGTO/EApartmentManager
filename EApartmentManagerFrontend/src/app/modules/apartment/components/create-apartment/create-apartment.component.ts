@@ -25,7 +25,7 @@ export class CreateApartmentComponent implements OnInit {
       {
         title: new FormControl('', [Validators.required, Validators.maxLength(99)]),
         roomAmount: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10000)]),
-        price: new FormControl("$1", [Validators.required, Validators.min(0)]),
+        price: new FormControl("$1", [Validators.required]),
         description: new FormControl('', [Validators.maxLength(999)]),
       });
 
