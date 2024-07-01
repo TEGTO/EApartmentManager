@@ -64,6 +64,20 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Price);
         }
         [Test]
+        public void Validate_RoomsAtMaximumValue_ShouldNotHaveValidationError()
+        {
+            var request = new CreateApartmentRequest { Rooms = int.MaxValue };
+            var result = validator.TestValidate(request);
+            result.ShouldNotHaveValidationErrorFor(x => x.Rooms);
+        }
+        [Test]
+        public void Validate_PriceAtMaximumValue_ShouldNotHaveValidationError()
+        {
+            var request = new CreateApartmentRequest { Price = decimal.MaxValue };
+            var result = validator.TestValidate(request);
+            result.ShouldNotHaveValidationErrorFor(x => x.Price);
+        }
+        [Test]
         public void Validate_DescriptionExceedsMaximumLength_ShouldHaveValidationError()
         {
             // Arrange

@@ -10,7 +10,7 @@ export class ApartmentApiService extends BaseApiService {
 
   getAllApartments(rooms: number, sortMode: SortMode): Observable<Apartment[]> {
     let sorting = sortMode == SortMode.ascending ? "asc" : "desc";
-    return this.getHttpClient().get<Apartment[]>(this.combinePathWithApartmentApiUrl(`?sorting=${sorting}&rooms${rooms}`)).pipe(
+    return this.getHttpClient().get<Apartment[]>(this.combinePathWithApartmentApiUrl(`?sorting=${sorting}&rooms=${rooms}`)).pipe(
       catchError((resp) => this.handleError(resp))
     );
   }

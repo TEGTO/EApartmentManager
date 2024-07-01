@@ -1,7 +1,11 @@
 <div class="apartment-wrapper">
-    <div class="header-wrapper text-2xl">
-        <p> Apartments </p>
+    <div class="apartment-header text-2xl">
+        <p> Apartments ({{apartmentAmount}}) </p>
         <div class="control-panel">
+            <input type="number" id="apartment-room-amount" [(ngModel)]="roomAmount" min="1"
+                (ngModelChange)="changeRoomAmount()"
+                class="bg-gray-50 mr-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Room amount" />
             <button mat-icon-button (click)="openCreateMenu()">
                 <span class="material-icons">add_circle</span>
             </button>
@@ -17,9 +21,9 @@
         </div>
     </div>
 
-    <div class="body-wrapper">
-        <div *ngFor="let i of Arr(num).fill(1)">
-            <apartment-item></apartment-item>
+    <div class="apartment-body">
+        <div *ngFor="let apartment of apartments">
+            <apartment-item [apartment]="apartment"></apartment-item>
         </div>
     </div>
 </div>

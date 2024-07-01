@@ -56,3 +56,21 @@ html {
 .mat-mdc-dialog-container .mat-mdc-dialog-title+.mat-mdc-dialog-content {
     overflow-y: hidden !important;
 }
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.185);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #07070731;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0 0 0 / 32%);
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}

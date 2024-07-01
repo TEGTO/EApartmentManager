@@ -13,6 +13,7 @@ import { EffectsModule, provideEffects } from '@ngrx/effects';
 import { StoreModule, provideState, provideStore } from '@ngrx/store';
 import { ApartmentBoardComponent, ApartmentControllerService, ApartmentDialogManager, ApartmentDialogManagerService, ApartmentEffects, ApartmentService, ApartmentsComponent, CreateApartmentComponent, apartmentReducer } from '.';
 import { ApartmentItemComponent } from './components/apartment-item/apartment-item.component';
+import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
 
 @NgModule({
   exports: [
@@ -23,6 +24,7 @@ import { ApartmentItemComponent } from './components/apartment-item/apartment-it
     CreateApartmentComponent,
     ApartmentsComponent,
     ApartmentItemComponent,
+    EditApartmentComponent,
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,17 @@
-<p>apartment-item works!</p>
+<button (click)="openEditApartmentMenu()"
+    class="apartment-item-wrapper w-full bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="apartment-name">
+        {{apartment.name}}
+    </div>
+    <div class="apartment-rooms">
+        {{apartment.rooms}} {{roomName}}
+    </div>
+    <div class="apartment-price">
+        {{apartment.price | currency}}
+    </div>
+    <div class="control-menu">
+        <button mat-icon-button (click)="deleteApartment($event)">
+            <span class="material-icons">delete</span>
+        </button>
+    </div>
+</button>

@@ -1,6 +1,9 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ApartmentService } from '../..';
+import { CreateApartmentRequest } from '../../../shared';
 
 @Component({
   selector: 'create-apartment',
@@ -15,13 +18,13 @@ export class CreateApartmentComponent implements OnInit {
   get priceInput() { return this.formGroup.get('price')!; }
   get descriptionInput() { return this.formGroup.get('description')!; }
 
-  constructor(private currencyPipe: CurrencyPipe) { }
+  constructor(private currencyPipe: CurrencyPipe, private apartmentService: ApartmentService, private dialogRef: MatDialogRef<CreateApartmentComponent>) { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup(
       {
         title: new FormControl('', [Validators.required, Validators.maxLength(99)]),
-        roomAmount: new FormControl(1, [Validators.required, Validators.min(1)]),
+        roomAmount: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10000)]),
         price: new FormControl("$1", [Validators.required, Validators.min(0)]),
         description: new FormControl('', [Validators.maxLength(999)]),
       });
@@ -39,10 +42,24 @@ export class CreateApartmentComponent implements OnInit {
   }
   submitForm() {
     if (this.formGroup.valid) {
-
+      let createRequest = this.getRequestFromForm();
+      this.apartmentService.createApartment(createRequest);
+      this.dialogRef.close();
     }
     else {
       this.formGroup.markAllAsTouched();
     }
+  }
+  private getRequestFromForm() {
+    const formValue = this.formGroup.value;
+    let price = parseFloat(String(formValue.price).replace(/\D/g, ''));
+    const createRequest: CreateApartmentRequest =
+    {
+      rooms: formValue.roomAmount,
+      name: formValue.title,
+      price: price,
+      description: formValue.description,
+    }
+    return createRequest;
   }
 }

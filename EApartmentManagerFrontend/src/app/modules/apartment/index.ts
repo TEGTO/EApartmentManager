@@ -1,3 +1,4 @@
+export * from '../apartment/components/edit-apartment/edit-apartment.component';
 export * from "./components/apartment-board/apartment-board.component";
 export * from "./components/apartment-item/apartment-item.component";
 export * from "./components/apartments/apartments.component";

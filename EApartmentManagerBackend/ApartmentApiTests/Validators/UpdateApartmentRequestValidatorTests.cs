@@ -1,8 +1,6 @@
 ﻿using ApartmentApi.Endpoints.Apartments.UpdateApartment;
 using ApartmentApi.Validators;
 using FluentValidation.TestHelper;
-using Moq;
-using NUnit.Framework;
 
 namespace ApartmentApiTests.Validators
 {
@@ -17,7 +15,7 @@ namespace ApartmentApiTests.Validators
             validator = new UpdateApartmentRequestValidator();
         }
         [Test]
-        public void Validate_WhenRoomsIsZero_ShouldHaveValidationError()
+        public void Validate_RoomsIsZero_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Rooms = 0 };
@@ -27,7 +25,7 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Rooms);
         }
         [Test]
-        public void Validate_WhenNameIsNull_ShouldHaveValidationError()
+        public void Validate_NameIsNull_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Name = null };
@@ -37,7 +35,7 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
         [Test]
-        public void Validate_WhenNameIsEmpty_ShouldHaveValidationError()
+        public void Validate_NameIsEmpty_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Name = "" };
@@ -47,7 +45,7 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
         [Test]
-        public void Validate_WhenNameExceedsMaximumLength_ShouldHaveValidationError()
+        public void Validate_NameExceedsMaximumLength_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Name = new string('A', 100) };
@@ -57,7 +55,7 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
         [Test]
-        public void Validate_WhenPriceIsZero_ShouldHaveValidationError()
+        public void Validate_PriceIsZero_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Price = 0 };
@@ -67,7 +65,7 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Price);
         }
         [Test]
-        public void Validate_WhenDescriptionExceedsMaximumLength_ShouldHaveValidationError()
+        public void Validate_DescriptionExceedsMaximumLength_ShouldHaveValidationError()
         {
             // Arrange
             var request = new UpdateApartmentRequest { Description = new string('A', 1000) };
@@ -77,7 +75,21 @@ namespace ApartmentApiTests.Validators
             result.ShouldHaveValidationErrorFor(x => x.Description);
         }
         [Test]
-        public void Validate_WhenRequestIsValid_ShouldNotHaveValidationErrors()
+        public void Validate_RoomsAtMaximumValue_ShouldNotHaveValidationError()
+        {
+            var request = new UpdateApartmentRequest { Rooms = int.MaxValue };
+            var result = validator.TestValidate(request);
+            result.ShouldNotHaveValidationErrorFor(x => x.Rooms);
+        }
+        [Test]
+        public void Validate_PriceAtMaximumValue_ShouldNotHaveValidationError()
+        {
+            var request = new UpdateApartmentRequest { Price = decimal.MaxValue };
+            var result = validator.TestValidate(request);
+            result.ShouldNotHaveValidationErrorFor(x => x.Price);
+        }
+        [Test]
+        public void Validate_RequestIsValid_ShouldNotHaveValidationErrors()
         {
             // Arrange
             var request = new UpdateApartmentRequest

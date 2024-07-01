@@ -1,0 +1,18 @@
+@use 'colors' as colors;
+
+.apartment-item-wrapper {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    box-shadow: 2px 2px 7px 1px colors.$task-box-shadow;
+    justify-content: space-between;
+    align-items: center;
+
+    .apartment-name {
+        width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+}
