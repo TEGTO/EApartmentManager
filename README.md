@@ -1,6 +1,10 @@
 ## Description
 Test case, apartment manager made using .NET for backend, angular for frontend and postgresql as database. The backend uses the REPR API pattern. Frontend uses redux (NgRx) pattern.
 
+<b>[Try Out Web App.](https://ambitious-bush-08919b303.5.azurestaticapps.net/)</b>
+
+API URL: https://app-eapartment-api-germanywestcentral-001.azurewebsites.net
+
 <sub>PS. You can edit the apartment information, click on the apartment to edit it.</sub>
 ## API Endpoints
 - Get all apartments, query is optional by default asc and -1 (ignore room amount) 
